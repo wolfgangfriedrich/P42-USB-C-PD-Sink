@@ -1,0 +1,18 @@
+; Buspirate at 115200baud, 8N1
+; I2C configured to 5kHz
+
+; Get device mode
+sendln '[0x10 0x00 0x00[0x11r]'#13
+pause 1
+; Get silicon ID
+sendln '[0x10 0x02 0x00[0x11rr]'#13
+pause 1
+; Get bus voltage in 100mV steps
+sendln '[0x10 0x0D 0x10[0x11r]'#13
+pause 1
+; Get PD status
+sendln '[0x10 0x08 0x10[0x11r:4]'#13
+pause 1
+; Get type C status
+sendln '[0x10 0x0C 0x10[0x11r:4]'#13
+pause 1
